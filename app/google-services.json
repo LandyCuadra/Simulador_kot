@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "97952247218",
+    "firebase_url": "https://simulador-tesis.firebaseio.com",
+    "project_id": "simulador-tesis",
+    "storage_bucket": "simulador-tesis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97952247218:android:242b125167ef04c2",
+        "android_client_info": {
+          "package_name": "com.cam.e.simulador_examenes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97952247218-l2s5tb77di1oubme0hlf4bn1s7jrvnv2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVCVckon7GjsaRZDv5Am0QhZh0QOkkay8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97952247218:android:32c1987287f1fc2d",
+        "android_client_info": {
+          "package_name": "com.cam.e.simulador_kot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97952247218-l2s5tb77di1oubme0hlf4bn1s7jrvnv2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVCVckon7GjsaRZDv5Am0QhZh0QOkkay8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
