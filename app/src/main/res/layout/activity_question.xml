@@ -45,5 +45,11 @@
             />
 
     </RadioGroup>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/next"
+        android:text="Siguiente"
+        android:layout_below="@+id/question"/>
 </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
