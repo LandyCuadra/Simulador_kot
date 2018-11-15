@@ -20,8 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MenuActivity"></activity>
-        <activity android:name=".OlvidadaActivity"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".OlvidadaActivity" />
+        <activity android:name=".QuestionActivity"></activity>
     </application>
 
 </manifest>
