@@ -27,8 +27,8 @@ class QuestionActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-              var temp: Preguntas = p0.getValue<Preguntas>(Preguntas::class.java)
-                Lista.add()
+              var temp: Preguntas =p0.getValue<Preguntas>(Preguntas::class.java)!!
+                Lista.add(temp)
 
             }
         })
@@ -36,7 +36,9 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     private fun visualizarPreguntas() {
-
+       for (item in Lista){
+           tvP1.setText(item.Enunciado)
+       }
     }
 
 }
