@@ -50,6 +50,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/next"
         android:text="Siguiente"
-        android:layout_below="@+id/question"/>
+        android:layout_below="@+id/tvQuestion"/>
 </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
