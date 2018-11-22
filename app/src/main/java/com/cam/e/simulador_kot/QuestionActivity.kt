@@ -1,5 +1,6 @@
 package com.cam.e.simulador_kot
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -33,7 +34,7 @@ class QuestionActivity : AppCompatActivity() {
         rbR4=findViewById(R.id.r4)
 
         database = FirebaseDatabase.getInstance()
-        dbrefence = database.getReference("/"+intent.extras["extra"])
+        dbrefence = database.getReference("/"+intent.extras.getString("extra"))
         dbrefence.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -72,11 +73,14 @@ class QuestionActivity : AppCompatActivity() {
         }
         else
             malas++
-        if(Lista.size>i)
-        visualizarPreguntas()
+        if(Lista.size>i) {
+            visualizarPreguntas()
+        }
         else
         {
-            
+            var inten:Intent=Intent(this,ResultadosActivity::class.java)
+            inten.putExtra("buenas",correctas)
+            inten.putExtra("todas",i)
         }
     }
 }
