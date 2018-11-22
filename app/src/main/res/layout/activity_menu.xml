@@ -20,7 +20,9 @@
         android:layout_height="wrap_content"
         android:text="Matematicas"
         android:layout_gravity="center"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:onClick="onClick"
+        />
 
     <Button
         android:id="@+id/btnEspañol"
@@ -28,7 +30,9 @@
         android:layout_height="wrap_content"
         android:text="Español"
         android:layout_gravity="center"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:onClick="onClick"
+        />
 
     <Button
         android:id="@+id/btnAnalitica"
@@ -36,7 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Analitica"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:onClick="onClick"
+        />
 
     <TextView
         android:layout_width="match_parent"
