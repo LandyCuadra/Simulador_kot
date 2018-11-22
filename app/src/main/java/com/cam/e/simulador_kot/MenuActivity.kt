@@ -24,5 +24,6 @@ class MenuActivity : AppCompatActivity() {
             extra="Analitica"
         }
           intent.putExtra("extra",extra)
+        startActivity(intent)
     }
 }

@@ -21,7 +21,7 @@ class QuestionActivity : AppCompatActivity() {
     private var i:Int=0
     private var correctas:Int=0
     private var malas:Int=0
-      private lateinit var Lista:MutableList<Preguntas>
+      private  var Lista:MutableList<Preguntas> = mutableListOf<Preguntas>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
@@ -41,8 +41,8 @@ class QuestionActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-              var temp: Preguntas =p0.getValue<Preguntas>(Preguntas::class.java)!!
-                Lista.add(temp)
+              //var temp: Preguntas =p0.getValue<Preguntas>(Preguntas::class.java)!!
+                //Lista.add(temp)
 
             }
         })
