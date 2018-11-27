@@ -13,11 +13,14 @@ class ResultadosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resultados)
+        tvResultado = findViewById(R.id.tvResultados)
+        tvConsejo = findViewById(R.id.tvconsejos)
         bund=intent.extras!!
-        tvResultado.text=""+bund.getInt("buenas")+"/"+bund.getInt("todas")
+        val resultado:String = ""+bund.getInt("buenas")+"/"+bund.getInt("todas")
+        tvResultado.text= resultado
     }
-    private fun onAceptarResultados(v:View){
-        var intento:Intent= Intent(this,MenuActivity::class.java)
+    fun onAceptarResultados(v:View){
+        val intento = Intent(this,MenuActivity::class.java)
         startActivity(intento)
     }
     private fun aconsejar(){
