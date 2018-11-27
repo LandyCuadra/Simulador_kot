@@ -15,7 +15,7 @@ class MenuActivity : AppCompatActivity() {
       var intent:Intent = Intent(this,QuestionActivity::class.java)
         var extra:String=""
         if (v.id==R.id.btnMatematica){
-          extra="Matematicas"
+          extra="Numericas"
         }
         if (v.id==R.id.btnEspañol){
             extra="Verbales"

@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.database.*
 
 class QuestionActivity : AppCompatActivity() {
@@ -22,7 +23,7 @@ class QuestionActivity : AppCompatActivity() {
     private var i:Int=0
     private var correctas:Int=0
     private var malas:Int=0
-      private  var Lista:MutableList<Preguntas> = mutableListOf<Preguntas>()
+    private var Lista:ArrayList<Preguntas> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
@@ -34,45 +35,56 @@ class QuestionActivity : AppCompatActivity() {
         rbR4=findViewById(R.id.r4)
 
         database = FirebaseDatabase.getInstance()
-        dbrefence = database.getReference("/"+intent.extras.getString("extra"))
+        dbrefence = database.getReference(intent.extras!!.getString("extra")!!)
         dbrefence.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-              //var temp: Preguntas =p0.getValue<Preguntas>(Preguntas::class.java)!!
-                //Lista.add(temp)
+
+                for(i in p0.children){
+
+                    val temp = i.getValue(Preguntas::class.java)
+                    Lista.add(temp!!)
+
+                }
+
+
+                Toast.makeText(baseContext, Lista[1].Enunciado, Toast.LENGTH_SHORT).show()
+                visualizarPreguntas()
 
             }
         })
-        visualizarPreguntas()
+
     }
 
     private fun visualizarPreguntas() {
-        tvP1.text=Lista[i].Enunciado
-        rbR1.text= Lista[i].R1
-        rbR2.text= Lista[i].R2
-        rbR3.text= Lista[i].R3
-        rbR4.text= Lista[i].R4
-        i++;
+        tvP1.text= Lista[i].Enunciado
+        rbR1.text= Lista[i].rA
+        rbR2.text= Lista[i].rB
+        rbR3.text= Lista[i].rC
+        rbR4.text= Lista[i].rD
+        i++
        }
-    private fun onNext(v:View){
-        if (rbR1.isSelected and Lista[i].RC.equals("Respuesta A")){
+    fun onNext(v:View){
+        //Toast.makeText(this, rbR1.isChecked.toString(), Toast.LENGTH_SHORT).show()
+
+        if (rbR1.isChecked and  Lista[i-1].rCorrecta.contentEquals("Respuesta A")){
              correctas++
         }
-        else if (rbR2.isSelected and Lista[i].RC.equals("Respuesta B")){
+        else if (rbR2.isChecked and Lista[i-1].rCorrecta.contentEquals("Respuesta B")){
             correctas++
         }
-        else if (rbR3.isSelected and Lista[i].RC.equals("Respuesta C")){
+        else if (rbR3.isChecked and Lista[i-1].rCorrecta.contentEquals("Respuesta C")){
             correctas++
         }
-        else if (rbR4.isSelected and Lista[i].RC.equals("Respuesta D")){
+        else if (rbR4.isChecked and Lista[i-1].rCorrecta.contentEquals("Respuesta D")){
             correctas++
         }
-        else
+        else {
             malas++
+        }
         if(Lista.size>i) {
             visualizarPreguntas()
         }
@@ -81,6 +93,8 @@ class QuestionActivity : AppCompatActivity() {
             var inten:Intent=Intent(this,ResultadosActivity::class.java)
             inten.putExtra("buenas",correctas)
             inten.putExtra("todas",i)
+            startActivity(inten)
+
         }
     }
 }
