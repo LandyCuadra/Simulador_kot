@@ -31,7 +31,7 @@ class QuestionActivity : AppCompatActivity() {
         rbR2=findViewById(R.id.r2)
         rbR3=findViewById(R.id.r3)
         rbR4=findViewById(R.id.r4)
-
+        progBar=findViewById(R.id.progressQ)
         database = FirebaseDatabase.getInstance()
         dbrefence = database.getReference(intent.extras!!.getString("extra")!!)
         dbrefence.addValueEventListener(object :ValueEventListener{

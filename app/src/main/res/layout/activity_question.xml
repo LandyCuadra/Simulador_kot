@@ -16,12 +16,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvQuestion"
         android:text="¿Es esta una pregunta?"
+        android:visibility="invisible"
+        />
+    <ProgressBar
+       style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressQ"
         />
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvQuestion"
         android:id="@+id/rgRespuestas"
+        android:visibility="invisible"
 
         >
         <RadioButton
