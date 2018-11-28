@@ -4,10 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.database.*
 
 class QuestionActivity : AppCompatActivity() {
@@ -19,6 +16,7 @@ class QuestionActivity : AppCompatActivity() {
     private lateinit var rbR2:RadioButton
     private lateinit var rbR3:RadioButton
     private lateinit var rbR4:RadioButton
+    private lateinit var progBar:ProgressBar
     private lateinit var database:FirebaseDatabase
     private var i:Int=0
     private var correctas:Int=0
@@ -38,13 +36,13 @@ class QuestionActivity : AppCompatActivity() {
         dbrefence = database.getReference(intent.extras!!.getString("extra")!!)
         dbrefence.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Toast.makeText(baseContext, "Error al cargar datos", Toast.LENGTH_SHORT).show()
             }
 
             override fun onDataChange(p0: DataSnapshot) {
 
                 for(i in p0.children){
-
+                   progBar.visibility=View.VISIBLE
                     val temp = i.getValue(Preguntas::class.java)
                     Lista.add(temp!!)
 
@@ -53,12 +51,16 @@ class QuestionActivity : AppCompatActivity() {
 
                 Toast.makeText(baseContext, Lista[1].Enunciado, Toast.LENGTH_SHORT).show()
                 visualizarPreguntas()
-
+                 visualizarcontroles()
             }
         })
 
     }
-
+    private fun visualizarcontroles(){
+        tvP1.visibility=View.VISIBLE
+        rgR1.visibility=View.VISIBLE
+        progBar.visibility=View.INVISIBLE
+    }
     private fun visualizarPreguntas() {
         tvP1.text= Lista[i].Enunciado
         rbR1.text= Lista[i].rA
