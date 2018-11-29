@@ -65,35 +65,52 @@ class QuestionActivity : AppCompatActivity() {
         rbR2.text= Lista[i].rB
         rbR3.text= Lista[i].rC
         rbR4.text= Lista[i].rD
-        i++
        }
+
     fun onNext(v:View){
         //Toast.makeText(this, rbR1.isChecked.toString(), Toast.LENGTH_SHORT).show()
-
-        if (rbR1.isChecked and  Lista[i-1].rCorrecta.contentEquals("Respuesta A")){
+        if (rbR1.isChecked and  Lista[i].rCorrecta.contentEquals("Respuesta A")){
              correctas++
         }
-        else if (rbR2.isChecked and Lista[i-1].rCorrecta.contentEquals("Respuesta B")){
+        else if (rbR2.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta B")){
             correctas++
         }
-        else if (rbR3.isChecked and Lista[i-1].rCorrecta.contentEquals("Respuesta C")){
+        else if (rbR3.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta C")){
             correctas++
         }
-        else if (rbR4.isChecked and Lista[i-1].rCorrecta.contentEquals("Respuesta D")){
+        else if (rbR4.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta D")){
             correctas++
         }
         else {
             malas++
         }
+        i++
         if(Lista.size>i) {
             visualizarPreguntas()
+
         }
         else
         {
-            var inten:Intent=Intent(this,ResultadosActivity::class.java)
+            var inten =Intent(this,ResultadosActivity::class.java)
             inten.putExtra("buenas",correctas)
             inten.putExtra("todas",i)
             startActivity(inten)
+
+        }
+    }
+
+    fun onPrev(v: View){
+
+
+        if(i>0){
+            if(correctas > 0)
+            correctas--
+            if(malas > 0)
+            malas --
+
+            i--
+            visualizarPreguntas()
+        }else if(i==0){
 
         }
     }
