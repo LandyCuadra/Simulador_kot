@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AnaliticaActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/tvQuestionanalit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="40dp"
+            android:text="¿Es esta una pregunta?"
+            android:textSize="22dp" />
+
+        <ImageView
+            android:id="@+id/enunciadoimagen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvQuestionanalit"
+            android:layout_alignEnd="@+id/tvQuestionanalit"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="72dp"
+            android:src="@drawable/common_google_signin_btn_icon_dark" />
+
+        <ProgressBar
+            android:id="@+id/progressQanalit"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioGroup
+            android:id="@+id/rgRespuestasanalit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvQuestionanalit"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/r1analit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/imvR1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/common_google_signin_btn_icon_dark" />
+
+                <RadioButton
+                    android:id="@+id/r3analit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text=""
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/imvR2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/r2analit"
+                    android:src="@drawable/common_google_signin_btn_icon_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/r4analit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/imvR3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/r3analit"
+                    android:src="@drawable/common_google_signin_btn_icon_dark" />
+
+
+                <RadioButton
+                    android:id="@+id/r2analit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text=""
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/imvR4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/r4analit"
+                    android:src="@drawable/common_google_signin_btn_icon_dark" />
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/nextanalit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rgRespuestasanalit"
+            android:layout_marginTop="176dp"
+            android:onClick="onNext"
+            android:text="Siguiente" />
+
+        <Button
+            android:id="@+id/prevanalit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rgRespuestasanalit"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="182dp"
+            android:onClick="onPrevanalit"
+            android:text="Anterior" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

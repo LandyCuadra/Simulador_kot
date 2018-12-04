@@ -23,7 +23,8 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".OlvidadaActivity" />
         <activity android:name=".QuestionActivity" />
-        <activity android:name=".ResultadosActivity"></activity>
+        <activity android:name=".ResultadosActivity" />
+        <activity android:name=".AnaliticaActivity"></activity>
     </application>
 
 </manifest>
