@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.bumptech.glide.Glide
 import com.google.firebase.database.*
 
 class AnaliticaActivity : AppCompatActivity() {
@@ -25,7 +26,7 @@ class AnaliticaActivity : AppCompatActivity() {
     private var i:Int=0
     private var correctas:Int=0
     private var malas:Int=0
-    private var Lista:ArrayList<Preguntas> = ArrayList()
+    private var Lista:ArrayList<PreguntasAnaliticas> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analitica)
@@ -52,7 +53,7 @@ class AnaliticaActivity : AppCompatActivity() {
 
                 for(i in p0.children){
                     progBar.visibility= View.VISIBLE
-                    val temp = i.getValue(Preguntas::class.java)
+                    val temp = i.getValue(PreguntasAnaliticas::class.java)
                     Lista.add(temp!!)
 
                 }
@@ -73,10 +74,12 @@ class AnaliticaActivity : AppCompatActivity() {
     }
     private fun visualizarPreguntas() {
         tvP1.text= Lista[i].Enunciado
-        rbR1.text= Lista[i].rA
-        rbR2.text= Lista[i].rB
-        rbR3.text= Lista[i].rC
-        rbR4.text= Lista[i].rD
+        if (Lista[i].Ei!= "")
+            Glide.with(this).load(Lista[i].Ei).into(imEnun)
+        Glide.with(this).load(Lista[i].rA).into(imR1)
+        Glide.with(this).load(Lista[i].rB).into(imR2)
+        Glide.with(this).load(Lista[i].rC).into(imR3)
+        Glide.with(this).load(Lista[i].rD).into(imR4)
     }
 
     fun onNext(v:View){
