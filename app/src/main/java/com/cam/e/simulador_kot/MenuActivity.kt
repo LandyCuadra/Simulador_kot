@@ -22,6 +22,7 @@ class MenuActivity : AppCompatActivity() {
         }
         if (v.id==R.id.btnAnalitica){
             extra="Analitica"
+            intent= Intent(this,AnaliticaActivity::class.java)
         }
           intent.putExtra("extra",extra)
         startActivity(intent)
