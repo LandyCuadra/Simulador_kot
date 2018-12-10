@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 class ResultadosActivity : AppCompatActivity() {
  private lateinit var  tvResultado:TextView
@@ -22,6 +23,7 @@ class ResultadosActivity : AppCompatActivity() {
     fun onAceptarResultados(v:View){
         val intento = Intent(this,MenuActivity::class.java)
         startActivity(intento)
+        finish()
     }
     private fun aconsejar(){
 
@@ -31,5 +33,10 @@ class ResultadosActivity : AppCompatActivity() {
             tvConsejo.text="Muy bien, pero aun puedes mejorar"
         else
             tvConsejo.text="Deberias esforzarte mas....."
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "No puedes regresar",Toast.LENGTH_SHORT).show()
+        return
     }
 }

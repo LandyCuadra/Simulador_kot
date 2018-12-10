@@ -21,10 +21,11 @@ class MenuActivity : AppCompatActivity() {
             extra="Verbales"
         }
         if (v.id==R.id.btnAnalitica){
-            extra="Analitica"
+            extra="Analiticas"
             intent= Intent(this,AnaliticaActivity::class.java)
         }
           intent.putExtra("extra",extra)
         startActivity(intent)
+        finish()
     }
 }

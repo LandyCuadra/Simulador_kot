@@ -97,7 +97,7 @@ class QuestionActivity : AppCompatActivity() {
             inten.putExtra("buenas",correctas)
             inten.putExtra("todas",i)
             startActivity(inten)
-
+            finish()
         }
     }
 

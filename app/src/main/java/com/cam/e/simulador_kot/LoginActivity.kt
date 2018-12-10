@@ -66,5 +66,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun ingresar(){
         startActivity(Intent(this, MenuActivity::class.java))
+        finish()
     }
 }
