@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_question.*
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -21,10 +22,12 @@ class QuestionActivity : AppCompatActivity() {
     private var i:Int=0
     private var correctas:Int=0
     private var malas:Int=0
+    private lateinit var resp:IntArray
     private var Lista:ArrayList<Preguntas> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
+        resp = IntArray(6)
         tvP1=findViewById(R.id.tvQuestion)
         rgR1=findViewById(R.id.rgRespuestas)
         rbR1=findViewById(R.id.r1)
@@ -48,8 +51,6 @@ class QuestionActivity : AppCompatActivity() {
 
                 }
 
-
-                Toast.makeText(baseContext, Lista[1].Enunciado, Toast.LENGTH_SHORT).show()
                 visualizarPreguntas()
                  visualizarcontroles()
             }
@@ -59,6 +60,8 @@ class QuestionActivity : AppCompatActivity() {
     private fun visualizarcontroles(){
         tvP1.visibility=View.VISIBLE
         rgR1.visibility=View.VISIBLE
+        next.visibility=View.VISIBLE
+        prev.visibility=View.VISIBLE
         progBar.visibility=View.INVISIBLE
     }
     private fun visualizarPreguntas() {
@@ -70,24 +73,35 @@ class QuestionActivity : AppCompatActivity() {
        }
 
     fun onNext(v:View){
-        //Toast.makeText(this, rbR1.isChecked.toString(), Toast.LENGTH_SHORT).show()
-        if (rbR1.isChecked and  Lista[i].rCorrecta.contentEquals("Respuesta A")){
-             correctas++
-        }
-        else if (rbR2.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta B")){
-            correctas++
-        }
-        else if (rbR3.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta C")){
-            correctas++
-        }
-        else if (rbR4.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta D")){
-            correctas++
-        }
-        else {
-            malas++
-        }
-        i++
-        if(Lista.size>i) {
+
+        if(Lista.size>i && i>=0) {
+            i++
+
+            if (rbR1.isChecked and  Lista[i].rCorrecta.contentEquals("Respuesta A")){
+                correctas++
+            }
+            else if (rbR2.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta B")){
+                correctas++
+            }
+            else if (rbR3.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta C")){
+                correctas++
+            }
+            else if (rbR4.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta D")){
+                correctas++
+            }
+            else {
+                malas++
+            }
+
+            resp.set(i, rgR1.checkedRadioButtonId)
+            Toast.makeText(this, resp[i].toString(),Toast.LENGTH_SHORT).show()
+
+            if(resp[i]==0){
+                rgR1.clearCheck()
+            }else{
+                rgR1.check(resp[i])
+            }
+
             visualizarPreguntas()
 
         }
@@ -99,18 +113,42 @@ class QuestionActivity : AppCompatActivity() {
             startActivity(inten)
             finish()
         }
+
     }
 
     fun onPrev(v: View){
 
-
-        if(i>0){
-            if(correctas > 0)
-            correctas--
-            if(malas > 0)
-            malas --
-
+        if(i>=0){
             i--
+
+            if(resp[i]==-1 || resp[i]==0){
+                rgR1.clearCheck()
+            }else{
+                rgR1.check(resp[i])
+            }
+
+        if (rbR1.isChecked and  Lista[i].rCorrecta.contentEquals("Respuesta A")){
+            correctas--
+        }
+        else if (rbR2.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta B")){
+            correctas--
+        }
+        else if (rbR3.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta C")){
+            correctas--
+        }
+        else if (rbR4.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta D")){
+            correctas--
+        }
+        else {
+            malas--
+        }
+
+
+
+
+
+
+
             visualizarPreguntas()
         }else if(i==0){
 
