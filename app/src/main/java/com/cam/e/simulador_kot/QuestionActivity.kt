@@ -73,35 +73,32 @@ class QuestionActivity : AppCompatActivity() {
        }
 
     fun onNext(v:View){
+        if (rbR1.isChecked and  Lista[i].rCorrecta.contentEquals("Respuesta A")){
+            correctas++
+        }
+        else if (rbR2.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta B")){
+            correctas++
+        }
+        else if (rbR3.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta C")){
+            correctas++
+        }
+        else if (rbR4.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta D")){
+            correctas++
+        }
+        else {
+            malas++
+        }
+        resp.set(i, rgR1.checkedRadioButtonId)
+        Toast.makeText(this, resp[i].toString(),Toast.LENGTH_SHORT).show()
 
-        if(Lista.size>i && i>=0) {
-            i++
+        i++
 
-            if (rbR1.isChecked and  Lista[i].rCorrecta.contentEquals("Respuesta A")){
-                correctas++
-            }
-            else if (rbR2.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta B")){
-                correctas++
-            }
-            else if (rbR3.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta C")){
-                correctas++
-            }
-            else if (rbR4.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta D")){
-                correctas++
-            }
-            else {
-                malas++
-            }
-
-            resp.set(i, rgR1.checkedRadioButtonId)
-            Toast.makeText(this, resp[i].toString(),Toast.LENGTH_SHORT).show()
-
-            if(resp[i]==0){
+        if(Lista.size>i) {
+            if(resp[i]==0 ){
                 rgR1.clearCheck()
             }else{
                 rgR1.check(resp[i])
             }
-
             visualizarPreguntas()
 
         }
@@ -119,6 +116,7 @@ class QuestionActivity : AppCompatActivity() {
     fun onPrev(v: View){
 
         if(i>=0){
+            if (i>0)
             i--
 
             if(resp[i]==-1 || resp[i]==0){
@@ -143,15 +141,7 @@ class QuestionActivity : AppCompatActivity() {
             malas--
         }
 
-
-
-
-
-
-
             visualizarPreguntas()
-        }else if(i==0){
-
         }
     }
 }
