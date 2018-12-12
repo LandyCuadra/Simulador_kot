@@ -1,6 +1,7 @@
 package com.cam.e.simulador_kot
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -68,12 +69,17 @@ class AnaliticaActivity : AppCompatActivity() {
     }
     private fun visualizarcontroles(){
         tvP1.visibility=View.VISIBLE
+        if (Lista[i].Ei!= ""){
         imEnun.visibility=View.VISIBLE
+        }
         rgR1.visibility=View.VISIBLE
         progBar.visibility=View.INVISIBLE
     }
     private fun visualizarPreguntas() {
         tvP1.text= Lista[i].Enunciado
+        if (Lista[i].Ei== ""){
+            imEnun.visibility=View.INVISIBLE
+        }
         if (Lista[i].Ei!= "")
             Glide.with(this).load(Lista[i].Ei).into(imEnun)
         Glide.with(this).load(Lista[i].rA).into(imR1)
