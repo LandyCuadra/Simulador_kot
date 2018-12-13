@@ -27,7 +27,6 @@ class QuestionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-        resp = IntArray(6)
         tvP1=findViewById(R.id.tvQuestion)
         rgR1=findViewById(R.id.rgRespuestas)
         rbR1=findViewById(R.id.r1)
@@ -50,7 +49,7 @@ class QuestionActivity : AppCompatActivity() {
                     Lista.add(temp!!)
 
                 }
-
+                resp = IntArray(Lista.size)
                 visualizarPreguntas()
                  visualizarcontroles()
             }

@@ -28,6 +28,7 @@ class AnaliticaActivity : AppCompatActivity() {
     private var correctas:Int=0
     private var malas:Int=0
     private var Lista:ArrayList<PreguntasAnaliticas> = ArrayList()
+    private lateinit var resp:IntArray
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analitica)
@@ -61,6 +62,7 @@ class AnaliticaActivity : AppCompatActivity() {
 
 
                 Toast.makeText(baseContext, Lista[1].Enunciado, Toast.LENGTH_SHORT).show()
+                resp = IntArray(Lista.size)
                 visualizarPreguntas()
                 visualizarcontroles()
             }
@@ -89,7 +91,6 @@ class AnaliticaActivity : AppCompatActivity() {
     }
 
     fun onNext(v:View){
-        //Toast.makeText(this, rbR1.isChecked.toString(), Toast.LENGTH_SHORT).show()
         if (rbR1.isChecked and  Lista[i].rCorrecta.contentEquals("Respuesta A")){
             correctas++
         }
@@ -105,35 +106,60 @@ class AnaliticaActivity : AppCompatActivity() {
         else {
             malas++
         }
+        resp.set(i, rgR1.checkedRadioButtonId)
+        Toast.makeText(this, resp[i].toString(),Toast.LENGTH_SHORT).show()
+
         i++
+
         if(Lista.size>i) {
+            if(resp[i]==0 ){
+                rgR1.clearCheck()
+            }else{
+                rgR1.check(resp[i])
+            }
             visualizarPreguntas()
 
         }
         else
         {
-            var inten = Intent(this,ResultadosActivity::class.java)
+            var inten =Intent(this,ResultadosActivity::class.java)
             inten.putExtra("buenas",correctas)
             inten.putExtra("todas",i)
             startActivity(inten)
-
+            finish()
         }
+
     }
 
     fun onPrev(v: View){
 
+        if(i>=0){
+            if (i>0)
+                i--
 
-        if(i>0){
-            if(correctas > 0)
+            if(resp[i]==-1 || resp[i]==0){
+                rgR1.clearCheck()
+            }else{
+                rgR1.check(resp[i])
+            }
+
+            if (rbR1.isChecked and  Lista[i].rCorrecta.contentEquals("Respuesta A")){
                 correctas--
-            if(malas > 0)
-                malas --
+            }
+            else if (rbR2.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta B")){
+                correctas--
+            }
+            else if (rbR3.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta C")){
+                correctas--
+            }
+            else if (rbR4.isChecked and Lista[i].rCorrecta.contentEquals("Respuesta D")){
+                correctas--
+            }
+            else {
+                malas--
+            }
 
-            i--
             visualizarPreguntas()
-        }else if(i==0){
-
         }
     }
-
 }
